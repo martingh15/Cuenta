@@ -76,13 +76,21 @@ public class CtrlABMCCuenta {
 		
 		public Cuenta getCuenta(Cuenta c) throws ApplicationException {
 			Cuenta cuen=null;
-			int i=cuentas.indexOf(c);
-			if(i>=0){
-				cuen=cuentas.get(i);
-			} else {
-				throw new ApplicationException("La persona no existe");
+			String nombre = c.getNombreCli();
+			for (int i = 0; i < cuentas.size(); i++) {
+				if(nombre.equals(cuentas.get(i).getNombreCli())){
+					cuen = cuentas.get(i);
+				}
+					
 			}
-			return cuen;
+			if(cuen==null)
+			{
+				throw new ApplicationException("Persona no encontrada");
+			}
+			return cuen;		
+				
+			
+			
 			
 		}
 		public void delete(Cuenta c){

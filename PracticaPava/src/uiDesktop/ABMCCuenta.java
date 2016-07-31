@@ -185,19 +185,35 @@ public class ABMCCuenta {
 	
 	public Cuenta MapearDeFormulario(){
 		Cuenta c = new Cuenta();
+		
 		c.setNombreCli(textNombreCli.getText());
 		c.setNroCuenta(textNroCuenta.getText());
+		
 		String cadena;
 		cadena = textTipoInteres.getText();
-		Double a = Double.parseDouble(cadena.trim());		
-		c.setTipoInteres(a);
+		if(cadena.equals(""))
+		{
+			c.setTipoInteres(0.0);
+		}
+		else {
+			c.setTipoInteres(Double.parseDouble(cadena.trim()));
+		}
+		
 		String cadena2;
-		cadena2 = textTipoInteres.getText();
-		Double a2 = Double.parseDouble(cadena.trim());		
-		c.setTipoInteres(a2);
-		c.setSaldo(a2);		
+		cadena2 = textSaldo.getText();
+		if(cadena2.equals(""))
+		{
+			c.setSaldo(0.0);
+		}
+		else {
+			c.setSaldo(Double.parseDouble(cadena2.trim()));
+		}
+		
+		
 		return c;
 	}
+	
+	
 	
 	public void limpiarCampos(){
 		textNombreCli.setText("");
@@ -232,10 +248,10 @@ public class ABMCCuenta {
 		
 	
 	public void MapearDeFormulario(Cuenta c){
-		textNombreCli.setText(String.valueOf(c.getNombreCli()).trim());
-		textNroCuenta.setText(String.valueOf(c.getNroCuenta()).trim());
-		textTipoInteres.setText(String.valueOf(c.getTipoInteres()).trim());
-		textSaldo.setText(String.valueOf(c.getSaldo()).trim());
+		textNombreCli.setText(String.valueOf(c.getNombreCli()));
+		textNroCuenta.setText(String.valueOf(c.getNroCuenta()));
+		textTipoInteres.setText(String.valueOf(c.getTipoInteres()));
+		textSaldo.setText(String.valueOf(c.getSaldo()));
 
 	}
 	
